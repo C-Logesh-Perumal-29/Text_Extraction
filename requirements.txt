@@ -2,7 +2,8 @@ streamlit
 pdf2image
 Pillow
 requests
-python-docx
-docx2pdf
-pywin32
+#python-docx
+#docx2pdf
+#pywin32
 ollama
+
