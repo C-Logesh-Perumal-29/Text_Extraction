@@ -3,7 +3,8 @@ pdf2image
 Pillow
 requests
 #python-docx
-#docx2pdf
+docx2pdf
 #pywin32
 ollama
+
 
