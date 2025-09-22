@@ -21,8 +21,8 @@ from ollama import Client
 def convert_docx_to_pdf_libreoffice(docx_path, pdf_path):
     temp_dir = os.path.dirname(pdf_path)
     
-    # Full path to LibreOffice executable
-    libreoffice_path = r"C:\Program Files\LibreOffice\program\soffice.exe"
+    # Use platform-independent soffice
+    libreoffice_path = "soffice"
     
     try:
         result = subprocess.run([
@@ -37,6 +37,9 @@ def convert_docx_to_pdf_libreoffice(docx_path, pdf_path):
         check=True,
         timeout=30
         )
+        
+        print("LibreOffice stdout:", result.stdout)
+        print("LibreOffice stderr:", result.stderr)
         
         docx_name = Path(docx_path).stem
         generated_pdf = os.path.join(temp_dir, f"{docx_name}.pdf")
@@ -54,6 +57,7 @@ def convert_docx_to_pdf_libreoffice(docx_path, pdf_path):
     except Exception as e:
         print(f"Unexpected error during conversion: {e}")
         return False
+
 
 # Ollama configuration
 MODEL = "qwen2.5vl:7b"
@@ -549,3 +553,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
